@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { View, Text, ActivityIndicator, ScrollView, StyleSheet } from 'react-native';
+//fetch request to API..then execute 
+//fetch for API or to render raw content
 
 export default class App extends Component {
 
-  state = {
-    loading: true,
-    error: false,
-    posts: [],
-  }
-
+state = {
+  loading: true,
+  error: false,
+  posts: []
+}
+data = 'hello';
   UNSAFE_componentWillMount = async () => {
     try {
       const response = await fetch('https://jsonplaceholder.typicode.com/posts')
@@ -28,7 +30,7 @@ export default class App extends Component {
       >
         <View style={styles.postNumber}>
           <Text>
-            {i + 1}
+            {i**2}
           </Text>
         </View>
         <View style={styles.postContent}>
@@ -54,7 +56,7 @@ export default class App extends Component {
       )
     }
 
-    if (error) {
+    else if (error) {
       return (
         <View style={styles.center}>
           <Text>
@@ -63,7 +65,7 @@ export default class App extends Component {
         </View>
       )
     }
-
+else {
     return (
       <ScrollView style={styles.container}>
         {posts.map(this.renderPost)}
@@ -71,10 +73,11 @@ export default class App extends Component {
     )
   }
 }
-
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#00000'
   },
   post: {
     flexDirection: 'row',
@@ -90,6 +93,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#EEE',
     paddingVertical: 25,
     paddingRight: 15,
+    backgroundColor: 'yellow',
   },
   postBody: {
     marginTop: 10,
